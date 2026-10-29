@@ -1,0 +1,29 @@
+services:
+  api:
+    container_name: unios-rag-api
+    build:
+      context: .
+      dockerfile: services/api/environment/Dockerfile.local
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      INSIDE_CONTAINER: "true"
+    volumes:
+      - ./packages/core/src:/app/packages/core/src:ro
+      - ./packages/utils/src:/app/packages/utils/src:ro
+      - ./services/api/src:/app/services/api/src:ro
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: unios-rag-postgres
+    image: public.ecr.aws/docker/library/postgres:18-alpine
+    env_file: .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:
