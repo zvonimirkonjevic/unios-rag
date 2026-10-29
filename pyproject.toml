@@ -5,3 +5,10 @@ description = "Implementation of a scraper and agentic RAG using LangChain, Fast
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = []
+
+[tool.uv.workspace]
+members = [
+    "packages/core",
+    "packages/utils",
+    "services/api",
+]
