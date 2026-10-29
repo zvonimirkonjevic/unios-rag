@@ -409,6 +409,7 @@ dependencies = [
     { name = "langchain-openai" },
     { name = "langgraph" },
     { name = "loguru" },
+    { name = "utils" },
 ]
 
 [package.metadata]
@@ -419,6 +420,7 @@ requires-dist = [
     { name = "langchain-openai", specifier = ">=1.6.7" },
     { name = "langgraph", specifier = ">=1.2.12" },
     { name = "loguru", specifier = ">=0.7.3" },
+    { name = "utils", editable = "packages/utils" },
 ]
 
 [[package]]
