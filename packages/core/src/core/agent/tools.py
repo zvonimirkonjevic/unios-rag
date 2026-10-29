@@ -1,7 +1,7 @@
-"""Dummy tools that return random data, for exercising tool-call streaming.
+"""Dummy tools that return random data until real retrieval tools exist.
 
-Each tool sleeps for a random interval so parallel calls finish at different
-times, making tool steps visible in the stream instead of arriving at once.
+Each tool sleeps for a random interval to stand in for the latency of a real
+external call.
 """
 import asyncio
 import random
