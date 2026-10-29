@@ -1,0 +1,7 @@
+[project]
+name = "unios-rag"
+version = "0.1.0"
+description = "Implementation of a scraper and agentic RAG using LangChain, FastAPI WebSockets, Postgres and pgvector."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
