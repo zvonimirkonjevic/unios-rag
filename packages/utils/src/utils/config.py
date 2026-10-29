@@ -1,6 +1,8 @@
 """Application settings read from environment variables."""
+
 import os
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 
 class classproperty[T]:

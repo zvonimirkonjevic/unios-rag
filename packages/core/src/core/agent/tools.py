@@ -3,6 +3,7 @@
 Each tool sleeps for a random interval to stand in for the latency of a real
 external call.
 """
+
 import asyncio
 import random
 

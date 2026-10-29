@@ -1,4 +1,5 @@
 """Request and response schemas for the `/answers` endpoint."""
+
 from pydantic import BaseModel, ConfigDict, Field
 
 

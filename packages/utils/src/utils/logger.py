@@ -1,4 +1,5 @@
 """Process-wide logging setup built on loguru."""
+
 import sys
 
 from loguru import logger

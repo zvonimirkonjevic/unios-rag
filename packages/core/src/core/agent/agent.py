@@ -1,4 +1,5 @@
 """Deep agent wrapper that answers one question and tags its LangSmith trace."""
+
 from deepagents import create_deep_agent
 from langchain.chat_models import init_chat_model
 
@@ -39,7 +40,7 @@ class Agent:
             "metadata": {
                 "question_id": self.question_id,
                 "model_id": self.model_id,
-            }
+            },
         }
 
     async def ainvoke(self, input_text: str):
@@ -70,7 +71,9 @@ class Agent:
             The compiled deepagents graph.
         """
         kwargs = {
-            "model": init_chat_model(self.model_id, **Config.model_init_kwargs.get(self.model_id, {})),
+            "model": init_chat_model(
+                self.model_id, **Config.model_init_kwargs.get(self.model_id, {})
+            ),
             "tools": TOOLS,
             "system_prompt": SYSTEM_PROMPT,
         }

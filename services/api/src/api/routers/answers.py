@@ -1,4 +1,5 @@
 """Answer one question per request: `{"id", "question"}` in, `{"id", "answer"}` out."""
+
 from fastapi import APIRouter, HTTPException, status
 from loguru import logger
 
@@ -23,7 +24,8 @@ async def answer(body: Question):
     agent = Agent(body.id, model_id=Config.model_id)
     try:
         response = await agent.ainvoke(body.question)
-    except Exception:
+    # Any failure inside the run (provider, tool, recursion limit) maps to one 502.
+    except Exception as e:  # noqa: BLE001
         logger.exception(f"agent run failed: question_id={body.id}")
-        raise HTTPException(status.HTTP_502_BAD_GATEWAY, "agent run failed")
+        raise HTTPException(status.HTTP_502_BAD_GATEWAY, "agent run failed") from e
     return Answer(id=body.id, answer=str(response["messages"][-1].text))

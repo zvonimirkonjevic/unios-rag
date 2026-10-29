@@ -1,4 +1,5 @@
 """API gateway entrypoint; `app` is served by uvicorn."""
+
 from fastapi import FastAPI
 
 from api.routers import answers
@@ -19,10 +20,10 @@ def create_app() -> FastAPI:
         description=(
             "Agentic RAG answering one question per request. "
             "Built to run locally, single-user, with no authentication.\n\n"
-            "`POST /answers` takes `{\"id\", \"question\"}` and returns "
-            "`{\"id\", \"answer\"}` with the same id."
+            '`POST /answers` takes `{"id", "question"}` and returns '
+            '`{"id", "answer"}` with the same id.'
         ),
-        version="1.0.0"
+        version="1.0.0",
     )
 
     @app.get("/health", tags=["Health"])
@@ -33,5 +34,6 @@ def create_app() -> FastAPI:
     app.include_router(answers.router)
 
     return app
+
 
 app = create_app()
